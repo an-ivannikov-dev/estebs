@@ -1,0 +1,35 @@
+{
+  "name": "estebs",
+  "version": "1.0.0",
+  "scripts": {
+    "get-hash": "npx truffle exec ./get-init-code-hash.js",
+    "clean": "rimraf ./build/",
+    "precompile": "yarn clean",
+    "compile": "waffle waffle.json",
+    "2compile": "truffle compile",
+    "postcompile": "yarn get-hash",
+    "pretest": "yarn compile",
+    "test": "truffle test",
+    "2predeploy": "yarn compile",
+    "2deploy": " truffle migrations --network",
+    "deploy": "ts-node mars-deploy.ts --private-key 0x? --infura-key ? --network ropsten --etherscan-key ? --verify ./build/UniswapV2Factory",
+    "verify": "truffle run verify --network ",
+    "ganache-cli": "ganache-cli"
+  },
+  "dependencies": {
+    "@uniswap/v2-core": "^1.0.1"
+  },
+  "devDependencies": {
+    "@truffle/hdwallet-provider": "^1.2.1",
+    "ethereum-mars": "^0.1.11",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.0.0",
+    "ganache-cli": "^6.12.1",
+    "rimraf": "^3.0.0",
+    "solc": "0.5.16",
+    "truffle": "^5.1.59",
+    "truffle-plugin-verify": "^0.5.4",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.3"
+  }
+}
